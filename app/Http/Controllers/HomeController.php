@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function user_home()
+    {
+        $users = \DB::select('select * from users');
+        return view('user.user_home',compact('users'));
+    }
 }
