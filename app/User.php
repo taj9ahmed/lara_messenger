@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected function send_msg(){
+        //store message in msg tbl
+        $this->
+    }
     /**
      * The attributes that are mass assignable.
      *

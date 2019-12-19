@@ -7,8 +7,14 @@
     @section('contact list')
            <div>
             <span>
-                <label for="selectUser">Contacts</label>
-                <select multiple size = "5" name="selectUser" id="" style="width:30%">
+                <label for="selectUser" style="width:30%">Contacts</label>
+                <label for="chatContent">Chat Contents</label>
+                
+            </span>
+            </div>
+            <div>
+            <span>
+            <select multiple size = "5" name="selectUser" id="" style="width:30%">
                 @forelse($users as $user)
                     @if(Auth()->user()->id !== $user->id)
                         <option value="{{ $user->name }}">{{ $user->name }}</option>
@@ -18,9 +24,7 @@
                         <option>No Contacts to Display</option>
                 @endforelse
                 </select>
-            </span>
-            <span>
-                <label for="chatContent">Chat Contents</label>
+                
                 <select multiple size = "5" name="chatContent" id="" style="width:30%">
                 @forelse($users as $user)
                     
@@ -31,6 +35,14 @@
                 @endforelse
                 </select>
             </span>
+        </div>
+        <div>
+            <form action="">
+                <input type="text" style="width:30%">
+        </div>
+        <div>
+                <button type="submit">Send</button>
+            </form>
         </div>
     @endsection
 
