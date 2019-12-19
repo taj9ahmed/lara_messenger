@@ -14,7 +14,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $messages = Message::all();//customize to only this users' messages
         return view('message.index', compact('messsages'));
     }
 
@@ -37,7 +37,13 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate( $request, [
+            'owner_id' => 'required',
+            'conv_id' => 'required',
+            'content' => 'required'
+        ]);
+
+        $this->store();
     }
 
     /**
@@ -57,9 +63,11 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function edit(Message $message)//maybe Request $request instead of $message ??
     {
-        //
+        $edited_msg->content = $message->content;
+        $edited_msg->save();
+       
     }
 
     /**
@@ -70,8 +78,10 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Message $message)
-    {
-        //
+    {           
+         $message = Messasge::find($request->id);
+            $message->update(['content' => $request->content]);
+        
     }
 
     /**
@@ -82,6 +92,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $deleted_msg = Message::find($message->id);
+        $deleted_msg->delete();
     }
 }

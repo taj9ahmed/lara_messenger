@@ -12,7 +12,7 @@ class User extends Authenticatable
 
     protected function send_msg(){
         //store message in msg tbl
-        $this->
+       // $this->
     }
     /**
      * The attributes that are mass assignable.

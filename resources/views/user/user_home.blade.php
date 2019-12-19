@@ -14,7 +14,8 @@
             </div>
             <div>
             <span>
-            <select multiple size = "5" name="selectUser" id="" style="width:30%">
+            <select multiple class="selectpicker" size = "5" name="selectUser" id="" style="width:30%">
+            <optgroup label="Select User">
                 @forelse($users as $user)
                     @if(Auth()->user()->id !== $user->id)
                         <option value="{{ $user->name }}">{{ $user->name }}</option>
@@ -25,7 +26,7 @@
                 @endforelse
                 </select>
                 
-                <select multiple size = "5" name="chatContent" id="" style="width:30%">
+                <select multiple class="selectpicker" size = "5" name="chatContent" id="" style="width:30%">
                 @forelse($users as $user)
                     
                         <option value=""></option>
